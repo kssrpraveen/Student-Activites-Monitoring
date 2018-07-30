@@ -1,0 +1,4 @@
+about projects
+tfid and rfid
+datsets worked on it
+analyze the data

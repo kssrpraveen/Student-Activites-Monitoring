@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block heading %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+  {% endblock %}
+  {% block body %}
+  <section>
+  <header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto text-center">
+      <h2>{{ name }}</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('dhome') }}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+ </header>
+</section>
+<br><br><br>
+<hr>
+  <section>
+  <table>
+    <tr>
+      <td>Username</td>
+      <td>Branch</td>
+      <td>Social Hours</td>
+      <td>Technical Hours</td>
+    </tr>
+    {% for datas in dataa %}
+    <tr>
+      <td>{{ datas.username }}</td>
+      <td>{{ datas.branch }}</td>
+      <td>{{ datas.socialhours }}</td>
+      <td>{{ datas.technical }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </section>
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+{% block heading %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="{{ url_for('static', filename='width=device-width, initial-scale=1') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  {% endblock %}
+  {% block body %}
+  <div class="card-section-imagia">
+  <section>
+  <header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="btn btn-light"><a href="#">Home</a></li>
+      </ul>
+      <ul class="navbar-nav mr-auto text-center">
+      <h2>Welcome {{ session['username'] }}</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('logout') }}">
+    Logout <i class="fa fa-user"></i></a></li>
+      </ul>
+     
+    </div>
+  </div>
+ </nav>
+ </header>
+</section>
+<br><br><br>
+<section>
+<div class="container">
+  <p class="bg-primary">{{ sn }}</p>
+  </div>
+</section>
+<br><br><br>
+<section>
+           <div class="container">
+            <div class="row">
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia"><img src="static/img/wp3.jpg" alt=""></div>
+                           <div class="user-imagia"><img src="static/img/sing.png" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">CULTURAL ACTIVITIES</h3>
+                           </div>
+                        </div>
+                        <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vcultural') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:50PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>CULTURALS</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                       <a style="text-decoration:none;" href="{{ url_for('cultural') }}"><button class="btn btn-primary active btn-block btn-lg"  data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia" style="height:350px;">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia cover-gradient"><img src="static/img/bg5.jpg"></div>
+                           <div class="user-imagia"><img src="static/img/literacy.png" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">LITERACY ACTIVITIES</h3>
+                           </div>
+                        </div>
+                        <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vliteracy') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:70PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>LITERACY</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                           <a style="text-decoration:none;" href="{{ url_for('literacy') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia" style="height:350px;">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia cover-gradient"><img src="static/img/bg5.jpg"></div>
+                           <div class="user-imagia"><img src="static/img/sports.jpg" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">SPORTS ACTIVITIES</h3>
+                           </div>
+                        </div>
+                        <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vsports') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:90PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>SPORTS</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                           <a style="text-decoration:none;" href="{{ url_for('sports') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia" style="height:350px;">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia cover-gradient"><img src="static/img/bg5.jpg"></div>
+                           <div class="user-imagia"><img src="static/img/seminar.png" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">SEMINAR/WORKSHOP ACTIVITIES</h3>
+                           </div>
+                        </div>
+                        <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vseminar') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:50PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>SEMINAR/</strong></h1>
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>WORKSHOP</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                           <a style="text-decoration:none;" href="{{ url_for('seminar') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia" style="height:350px;">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia cover-gradient"><img src="static/img/bg5.jpg"></div>
+                           <div class="user-imagia"><img src="static/img/social.jpg" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">SOCIAL SERVICE ACTIVITIES</h3>
+                           </div>
+                        </div>
+                       <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vsocial') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:20PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>SOCIAL SERVICE</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                           <a style="text-decoration:none;" href="{{ url_for('social') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-4" style="height:350px;">
+                  <div class="card-container-imagia" style="height:350px;">
+                     <div class="card-imagia" style="height:350px;">
+                        <div class="front-imagia" style="height:350px;">
+                           <div class="cover-imagia"><img src="static/img/bg1.jpg" alt=""></div>
+                           <div class="user-imagia"><img src="static/img/nss.png" class="img-circle" alt=""></div>
+                           <div class="content-imagia">
+                              <h3 class="name-imagia">NSS ACTIVITIES</h3>
+                           </div>
+                        </div>
+                        <div class="back-imagia" style="height:350px;">
+                              <div>
+                           <a style="text-decoration:none;" href="{{ url_for('vnss') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">VIEW</button></a></div>
+                           <div class="content-imagia content-back-imagia">
+                              <div style="padding-left:120PX;">
+                                 <h1 class="text-center" style="color:rgb(141,22,183);"><strong>NSS</strong></h1>
+                              </div>
+                           </div>
+                           <div class="footer-imagia">
+                           <a style="text-decoration:none;" href="{{ url_for('nss') }}"><button class="btn btn-primary active btn-block btn-lg" type="submit" data-bs-hover-animate="pulse" style="background-color:rgb(7,118,230);">ACTIVITY REGISTRATION</button></a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/bootstrap/js/bootstrap.min.js"></script>
+      <script src="static/js/bs-animation.js"></script>
+      <br><br><br>
+</div>
+  <!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+      <!-- Social buttons -->
+      <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+          <a class="btn-floating btn-fb mx-1">
+            <i class="fa fa-facebook"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-tw mx-1">
+            <i class="fa fa-twitter"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-gplus mx-1">
+            <i class="fa fa-google-plus"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-li mx-1">
+            <i class="fa fa-linkedin"> </i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="btn-floating btn-dribbble mx-1">
+            <i class="fa fa-dribbble"> </i>
+          </a>
+        </li>
+      </ul>
+      <!-- Social buttons -->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> KSSR Praveen</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+{% endblock %}

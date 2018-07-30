@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block heading %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+  {% endblock %}
+  {% block body %}
+  <section>
+  <header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto text-center">
+      <h2>{{ name }}</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('whome') }}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+ </header>
+</section>
+<br><br><br>
+<hr>
+  <section>
+  <table>
+    <tr>
+      <td>Username</td>
+      <td>Semester 1</td>
+      <td>Semester 2</td>
+      <td>Semester 3</td>
+      <td>Semester 4</td>
+      <td>Semester 5</td>
+      <td>Semester 6</td>
+      <td>Semester 7</td>
+      <td>Semester 8</td>
+    </tr>
+    {% for datas in dataa %}
+    <tr>
+      <td>{{ datas.username }}</td>
+      <td>{{ datas.sem1 }}</td>
+      <td>{{ datas.sem2 }}</td>
+      <td>{{ datas.sem3 }}</td>
+      <td>{{ datas.sem4 }}</td>
+      <td>{{ datas.sem5 }}</td>
+      <td>{{ datas.sem6 }}</td>
+      <td>{{ datas.sem7 }}</td>
+      <td>{{ datas.sem8 }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </section>
+{% endblock %}

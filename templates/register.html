@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+{% block heading %}
+<script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js">
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+<style type="text/css">
+    select {
+        width: 150px;
+        margin: 10px;
+    }
+    select:focus {
+        min-width: 150px;
+        width: auto;
+    }  
+    </style>  
+<script type="text/javascript">
+	function compare()
+{
+    var startDt = document.getElementById("frdate").value;
+    var endDt = document.getElementById("todate").value;
+
+    if( (new Date(startDt).getTime() > new Date(endDt).getTime()))
+    {
+        alert("Enter Valid dates");
+        document.getElementById('todate').value = '';
+    }
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(function() {
+$("#file").change(function () {
+	    if(fileExtValidate(this)) {
+	    	 if(fileSizeValidate(this)) {
+	    	 	showImg(this);
+	    	 }	 
+	    }    
+    });
+
+// File extension validation, Add more extension you want to allow
+var validExt = ".png, .gif, .jpeg, .jpg";
+function fileExtValidate(fdata) {
+ var filePath = fdata.value;
+ var getFileExt = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+ var pos = validExt.indexOf(getFileExt);
+ if(pos < 0) {
+ 	alert("This file is not allowed, please upload valid file.");
+ 	return false;
+  } else {
+  	return true;
+  }
+}
+
+// file size validation
+// size in kb
+var maxSize = '100';
+function fileSizeValidate(fdata) {
+	 if (fdata.files && fdata.files[0]) {
+                var fsize = fdata.files[0].size/1024;
+                if(fsize > maxSize) {
+                	 alert('Maximum file size exceed, This file size is: ' + fsize + "KB");
+                	 return false;
+                } else {
+                	return true;
+                }
+     }
+ }
+
+ // display img preview before upload.
+function showImg(fdata) {
+        if (fdata.files && fdata.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(fdata.files[0]);
+        }
+    }
+
+	
+});
+</script>
+{% endblock %}
+{% block body %}
+<section>
+  <header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto text-center">
+      <h2>{{ session["activityname"] }}</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('home') }}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+ </header>
+</section>
+<section>
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-14 col-sm-10 col-md-6 col-sm-offset-4 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Enter Event Details</h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" action="{{ url_for('uploads') }}" method="post" enctype=multipart/form-data>
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Roll No</label>
+			    					<div class="form-group">
+			                <input type="text" name="rollno" id="rollno" class="form-control input-sm floatlabel" value="{{ session['username'] }}" disabled>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Regulation</label>
+			    					<div class="form-group">
+			                <input type="text" name="regl" id="regl" class="form-control input-sm floatlabel" value="{{ session['reg'] }}" disabled>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Year</label>
+			    					<div class="form-group">
+			    						<select name="yearp">
+                                         <option value="1">1</option>
+									     <option value="2">2</option>
+									     <option value="3">3</option>
+									     <option value="4" selected>4</option>
+									    </select>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Branch</label>
+			    					<div class="form-group">
+			                <input type="text" name="branch" id="branch" class="form-control input-sm floatlabel" value="{{ session['branch'] }}" disabled>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Semester</label>
+			    					<div class="form-group">
+			    						<select name="sem">
+                                         <option value="1" selected>1</option>
+                                         <option value="2">2</option>
+									     <option value="3">3</option>
+									     <option value="4">4</option>
+									     <option value="5">5</option>
+									     <option value="6">6</option>
+									     <option value="7">7</option>
+									     <option value="8">8</option>
+									    </select>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Activity Name</label>
+			    					<div class="form-group">
+			                <input type="text" name="cultural" id="cultural" class="form-control input-sm floatlabel" value="{{ session['activityname'] }}" disabled>
+			    					</div>
+			    				</div>
+			    			<div class="col-xs-12 col-sm-12 col-md-12">
+			    				<label>Event Description</label>
+			    			<div class="form-group">
+			    				<input type="text" name="activityd" id="activityd" class="form-control input-sm" placeholder="Enter Activity Description" required>
+			    			</div>
+			    		   </div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>From Date</label>
+			    					<div class="form-group">
+			    						<input type="date" name="frdate" id="frdate" class="form-control input-sm" placeholder="From Date" required>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>To Date</label>
+			    					<div class="form-group">
+			    						<input type="date" name="todate" id="todate" class="form-control input-sm" placeholder="To Date" required onblur="compare()">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Working days</label>
+			    					<div class="form-group">
+			    						<input type="text" name="working" id="working" class="form-control input-sm" placeholder="No of Working Days" required>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Level of Prticipation</label>
+			    					<div class="form-group">
+			    						<select name="levelp">
+                                         <option value="our college" selected>Our College</option>
+                                         <option value="other college">Other College</option>
+									     <option value="district">District</option>
+									     <option value="state">State</option>
+									     <option value="national">National</option>
+									    </select>
+			    					</div>
+			    				</div>
+
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Place of Participation</label>
+			    					<div class="form-group">
+			    						<input type="text" name="placep" id="placep" class="form-control input-sm" placeholder="Place of Participation" required>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-4 col-sm-4 col-md-4">
+			    					<div class="form-group">
+			    						<label>Upload Proof</label>
+										    <input type="file" name="files" id=file required>
+										    <span style="color:red"> Note: Please select only image file (eg: .png, .jpeg, .jpg, .gif etc)<br/> Max File size : 100KB allowed </span><br/>
+										    <img id="img" src="http://placehold.it/100x100" alt="No image uploaded"  width="100" height="100"/>
+			    					</div>
+			    				</div>
+			    			</div>
+			    			
+			    			<input type="submit" value="Submit" class="btn btn-info btn-block">
+			    		
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+</section>
+{% endblock %}

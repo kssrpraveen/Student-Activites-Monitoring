@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% block heading %}
+<script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js"></script>
+<script type="text/javascript">
+	function compare()
+{
+    var startDt = document.getElementById("frdate").value;
+    var endDt = document.getElementById("todate").value;
+
+    if( (new Date(startDt).getTime() > new Date(endDt).getTime()))
+    {
+        alert("Enter Valid dates");
+        document.getElementById('todate').value = '';
+    }
+}
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+<style type="text/css">
+    select {
+        width: 150px;
+        margin: 10px;
+    }
+    select:focus {
+        min-width: 150px;
+        width: auto;
+    }  
+</style>  
+
+
+{% endblock %}
+{% block body %}
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-14 col-sm-10 col-md-6 col-sm-offset-4 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Update Event Details</h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" action="{{ url_for('updateevent') }}" method="post" enctype=multipart/form-data>
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Roll No</label>
+			    					<div class="form-group">
+			                <input type="text" name="rollno" id="rollno" class="form-control input-sm floatlabel" value="{{ udata[1] }}" disabled>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Regulation</label>
+			    					<div class="form-group">
+			                <input type="text" name="regl" id="regl" class="form-control input-sm floatlabel" value="{{ udata[2] }}" disabled>
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Year</label>
+			    					<input type="text" name="yearp" id="yearp" class="form-control input-sm floatlabel" value="{{ udata[3] }}">
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Semester</label>
+			    					<div class="form-group">
+			                <input type="text" name="sem" id="sem" class="form-control input-sm floatlabel" value="{{ udata[4] }}">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Branch</label>
+			    					<div class="form-group">
+			                <input type="text" name="branch" id="branch" class="form-control input-sm floatlabel" value="{{ udata[5] }}" disabled>
+			    					</div>
+			    				</div>
+			    				
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Activity Name</label>
+			    					<div class="form-group">
+			                <input type="text" name="actname" id="actname" class="form-control input-sm floatlabel" value="{{ udata[6] }}" disabled>
+			    					</div>
+			    				</div>
+			    			<div class="col-xs-12 col-sm-12 col-md-12">
+			    				<label>Event Description</label>
+			    			<div class="form-group">
+			    				<input type="text" name="activityd" id="activityd" class="form-control input-sm" placeholder="Enter Activity Description" value="{{ udata[7] }}">
+			    			</div>
+			    		   </div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>From Date</label>
+			    					<div class="form-group">
+			    						<input type="date" name="frdate" id="frdate" class="form-control input-sm" placeholder="From Date" value="{{ udata[8] }}">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>To Date</label>
+			    					<div class="form-group">
+			    						<input type="date" name="todate" id="todate" class="form-control input-sm" placeholder="To Date" value="{{ udata[9] }}" onblur="compare()">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Working days</label>
+			    					<div class="form-group">
+			    						<input type="text" name="working" id="working" class="form-control input-sm" placeholder="No of Working Days" value="{{ udata[10] }}" >
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Level of Prticipation</label>
+			    					<input type="text" name="levelp" id="levelp" class="form-control input-sm" placeholder="Place of Participation" value="{{ udata[11] }}">
+			    					</div>
+			    				</div>
+
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<label>Place of Participation</label>
+			    					<div class="form-group">
+			    						<input type="text" name="placep" id="placep" class="form-control input-sm" placeholder="Place of Participation" value="{{ udata[12] }}">
+			    					</div>
+			    				</div>
+			    				<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#savechanges">Save Changes
+								</button>
+			    			</div>
+			    			
+					            
+					        
+			    				
+			    			<div class="modal fade" id="savechanges" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Conformation</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        <p>Do you want to save changes you made to document before closing?</p>
+                                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+            
+
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							        <button type="submit" class="btn btn-primary">Save changes</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block heading %}
+     Login
+  {% endblock %}
+  {% block body %}
+
+    <div id="img">
+    <div ><strong>GVPCOE VISAKHAPATANAM</strong></div>
+    </div>
+    <div id="login">
+        <h1><strong>Welcomes at GVPCOE</strong> Please login.</h1>
+        <form action="{{ url_for('login') }}" method="post" enctype=multipart/form-data>
+            <fieldset>
+                <p><input type="text" required value="Username" name="name"  onBlur="if (this.value === '')
+                            this.value = 'Username'" onFocus="if (this.value === 'Username')
+                                        this.value = ''"/></p>
+
+                <p><input type="password" required value="Password" name="pass" onBlur="if (this.value === '')
+                            this.value = 'Password'" onFocus="if (this.value === 'Password')
+                                        this.value = ''"/></p>
+                                        <h2><span style="color:red">{{ CNFM }}</span></h2>
+                <p><a href="www.">Forgot Password?</a></p>
+                <input type="submit" value="Login"/>
+
+            </fieldset>
+        </form>
+
+      
+    </div> <!-- end login -->
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block heading %}
+     Login
+  {% endblock %}
+  {% block body %}
+  <hr>
+  <div class="container">
+  <p class="bg-primary">{{ sn }}</p>
+  </div>
+<form action="{{ url_for('uploads') }}" method="post" enctype=multipart/form-data>
+		<label id="activityd"><b>Activity Description</b></label>
+		<input type="text" name="activityd" placeholder="Enter Activity Description" required>
+		<label id="frdate"><b>From date</b></label>
+		<input type="date" name="frdate">
+    <label id="todate"><b>To date</b></label>
+    <input type="date" name="todate"> 
+    <label id="wodays"><b>To date</b></label>
+    <input type="text" name="wodays"> 
+    <label id="levelp"><b>Level of Participation</b></label>
+    <select name="levelp">
+      <option>College</option>
+      <option>District</option>
+      <option>State</option>
+      <option>National</option>
+    </select>
+    <label id="placep"><b>Place Of Participation</b></label>
+    <input type="text" name="placep" placeholder="Place of Participation" required="">
+    <label><b>Upload Proof</b></label>
+    <input type="file" name="files">
+    <input type="submit" value="Upload">
+    </form>
+
+{% endblock %}

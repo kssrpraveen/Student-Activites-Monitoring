@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block heading %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #8999A8;
+    border: none;
+}
+</style>
+  {% endblock %}
+  {% block body %}
+  <section>
+  <header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto text-center">
+      <h2>{{ name }}</h2>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('home') }}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </a></li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+ </header>
+</section>
+<br><br><br>
+  <section>
+  <table>
+    <tr>
+      <td>Rollno</td>
+      <td>Regulation</td>
+      <td>Branch</td>
+      <td>Year</td>
+      <td>semester</td>
+      <td>Activity Name</td>
+      <td>Activity Description</td>
+      <td>From Days</td>
+      <td>Todays</td>
+      <td>wdays</td>
+      <td>Level</td>
+      <td>Place</td>
+      <td>status</td>
+      <td>proof</td>
+    </tr>
+   {% for datas in dataa %}
+    <tr>
+      <td hidden>{{ datas.id }}</td>
+    	<td>{{ datas.rollno }}</td>
+      <td>{{ datas.reg }}</td>
+      <td>{{ datas.branch }}</td>
+      <td>{{ datas.year }}</td>
+      <td>{{ datas.semester }}</td>v
+    	<td>{{ datas.activityname }}</td>
+      <td>{{ datas.activitydesc }}</td>
+    	<td>{{ datas.fromdate }}</td>
+    	<td>{{ datas.todate }}</td>
+    	<td>{{ datas.wdays }}</td>
+    	<td>{{ datas.lopartic }}</td>
+    	<td>{{ datas.popartic }}</td>
+      <td>{{ datas.status }}</td>
+      {%for k in datas%}
+      <td><img src="data:image/png;base64,{{ k }}" width="100" height="70" /></td>
+      </button></td>
+      <td><a href='/editprofile/{{ datas.id }}'><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Edit
+        </button></a></td>
+      <td><a href='/deleteprofile/{{ datas.id }}'> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-trash"></span> Trash 
+        </button></a></td>
+      {%break%}
+      {% endfor %}
+
+    </tr>
+   {% endfor %}
+  </table>
+  <hr>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block heading %}
+     hello
+  {% endblock %}
+  {% block body %}
+<form action="{{ url_for('uploads') }}" method="post" enctype=multipart/form-data>
+<input type="file" name="files">
+<input type="submit" name="Submit">
+</form>
+{% endblock %}
+</body>
+</html>

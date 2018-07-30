@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block heading %}
+      First Page
+  {% endblock %}
+  {% block body %}
+  <ol>
+  	<li>{{ CNFM }}</li>
+  </ol>
+ <div>
+  <form action="{{ url_for('logout') }}" method="post" enctype=multipart/form-data>
+   <input type="submit" value="Logout">
+</form>
+</div>
+
+<div>
+	<input type="text" name="hiddens" value={{ CNFM }} readonly>
+	<a href="search">Individual deatils</a>
+	<a href="infos">Enter an event details</a>
+	<form action="{{ url_for('view') }}" method="post" enctype=multipart/form-data>
+		<input type="submit" value="View data">
+	</form>
+</div>
+{% endblock %}
+</body>
+</html>

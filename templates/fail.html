@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block heading %}
+      Profile
+  {% endblock %}
+  {% block body %}
+  <table>
+   {% for datas in dataa %}
+    <tr>
+    	<td>{{ datas.rollno }}</td>
+    	<td>{{ datas.activityname }}</td>
+    	<td>{{ datas.fromdate }}</td>
+    	<td>{{ datas.todate }}</td>
+    	<td>{{ datas.nohours }}</td>
+    	<td>{{ datas.lopartic }}</td>
+    	<td>{{ datas.popartic }}</td>
+    </tr>
+   {% endfor %}
+  </table>
+{% endblock %}
+</body>
+</html>

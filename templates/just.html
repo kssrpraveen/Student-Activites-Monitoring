@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block heading %}
+      Profile
+  {% endblock %}
+  {% block body %}
+	<form action="{{ url_for('uploads') }}" method="post" enctype=multipart/form-data>
+		<label id="name">Username</label>
+		<input type="text" name="name" placeholder="Enter username">
+		<label id="pass">Password</label>
+		<input type="Password" name="pass" placeholder="Enter Password">
+        <input type="file" name="file"><span style="color:red">{{ error }}</span>
+        <input type="submit" value="Upload">
+    </form>
+
+{% endblock %}
